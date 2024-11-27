@@ -19,11 +19,11 @@ class Player {
         return $this->nome;
     }
 
-    public function setNick(string $nickname): void {
-        if (empty($nickname)) {
-            $this->nickname = "Invalido"; 
+    public function setNick(string $nick): void {
+        if (empty($nick)) {
+            $this->nick = "Invalido"; 
         } else {
-            $this->nickname = $nickname;
+            $this->nick = $nick;
         }
     }
 
