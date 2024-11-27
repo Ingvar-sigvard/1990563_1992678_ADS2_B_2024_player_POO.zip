@@ -1,6 +1,6 @@
 <?php
 
-require_once('Item.pgp')
+require_once('Item.php')
 require_once('Inventario.php')
     
 Class Defesa extends Item {
