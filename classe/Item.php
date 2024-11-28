@@ -1,52 +1,50 @@
 <?php
 
-Class  Item{
+class Item
+{
     private string $nome;
     private int $tamanho;
-    private string $classe;
+    private string $categoria;
 
-
-    public function __construct($nome, $tamanho, $classe){
-        $this->setNome($nome);
-        $this->setTamanho($tamanho);
-        $this->setClasse($classe);
+    public function __construct(string $nome, int $tamanho, string $categoria) {
+        $this->nome = $nome;
+        $this->tamanho = $tamanho;
+        $this->categoria = $categoria;
     }
 
-    public function getNome() {
+    public function getTamanho(): int {
+        return $this->tamanho;
+    }
+
+    public function setTamanho(int $tamanho): void{
+        if ($tamanho > 0) {
+            $this->tamanho = $tamanho;
+        } else {
+            $this->tamanho = 'Tamanho não pode estar vazio';
+        }
+    }
+
+    public function getNome(): string {
         return $this->nome;
-        public function setNome(string $nome): void{
-            if(empty($nome)){
-                $this->nome = "Errado";
-            } else{
-                $this->nome = $nome;
-            }
-        }
-    
-        public function getTamanho(): int{
-            return $this->tamanho;
-        }
-    
-        public function setTamanho(int $tamanho): void{
-            if($tamanho <= 0){
-                $this-> tamanho = "Errado";
-            } else {
-                $this-> tamanho = $tamanho;
-            }
-        }
-    
-        public function getClasse(): string{
-            return $this-> classe;
-        }
-    
-        public function setClasse(string $classe): void{
-            if(empty($classe)){
-                $this-> classe = "Errado";
-            } else{
-                $this-> classe = $classe;
-            }
+    }
+
+    public function setNome(string $nome): void {
+        if ($nome != '') {
+            $this->nome = $nome;
+        } else {
+            $this->nome = 'Nome não pode estar vazio';
         }
     }
-    
-}
 
-?>
+    public function getCategoria(): string {
+        return $this->categoria;
+    }
+
+    public function setCategoria(string $categoria): void {
+        if ($categoria != '') {
+            $this->categoria = $categoria;
+        } else {
+            $this->categoria = "Categoria não pode ser vazia.";
+        }
+    }
+}
