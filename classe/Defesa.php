@@ -1,10 +1,7 @@
 <?php
 
-require_once('Item.php')
-require_once('Inventario.php')
-    
-Class Defesa extends Item {
-    public function __construct(string $nome, int $tamanho, string $classe) {
-        parent::__construct($nome, $tamanho, $classe);
+class Defesa extends Item {
+    public function __construct(string $nick, string $classe) {
+        parent::__construct($nome, 4, "Defesa");
     }
 }
