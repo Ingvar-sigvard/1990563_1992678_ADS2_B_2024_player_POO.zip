@@ -5,8 +5,8 @@ class Inventario {
     private string $itens;
 }
 
-public function __construct($capacidadeInicial = 20) {
-    $this-> capacidadeInicial = $capacidadeInicial;
+public function __construct() {
+    $this-> capacidadeInicial = 20;
     $this -> itens = [];
 }
 
