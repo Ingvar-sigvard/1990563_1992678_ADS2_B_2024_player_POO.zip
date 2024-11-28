@@ -31,7 +31,7 @@ $player->elevarNivel();
 echo "Nível elevado: " . $player->getNivel() . "<br>";
 echo "Capacidade do inventário: " . $player->getInventario()->getCapacidade() . "<br>";
 
-echo $player->esvaziarInventario() . ;
+echo $player->esvaziarInventario() . "<br>";
 
 echo "Itens no inventário após esvaziar:<br>";
 foreach ($player->getInventario()->listarItens() as $item) {
