@@ -20,7 +20,7 @@ class Item
         if ($tamanho > 0) {
             $this->tamanho = $tamanho;
         } else {
-            $this->tamanho = 'Tamanho não pode estar vazio';
+            $this->tamanho = 'Tamanho vazio';
         }
     }
 
@@ -32,7 +32,7 @@ class Item
         if ($nome != '') {
             $this->nome = $nome;
         } else {
-            $this->nome = 'Nome não pode estar vazio';
+            $this->nome = 'Nome vazio';
         }
     }
 
@@ -44,7 +44,7 @@ class Item
         if ($categoria != '') {
             $this->categoria = $categoria;
         } else {
-            $this->categoria = "Categoria não pode ser vazia.";
+            $this->categoria = "Categoria vazia.";
         }
     }
 }
