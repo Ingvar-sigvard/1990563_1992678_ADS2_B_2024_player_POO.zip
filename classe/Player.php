@@ -1,77 +1,61 @@
 <?php
-
-require_once('Item.php')
-require_once('Invetario.php')
+require_once 'Inventario.php';
 
 class Player {
-    private string $nick;
+    private string $nickname;
     private int $nivel;
     private Inventario $inventario;
 
-    public function __construct($nick, $nivel) {
-        $this-> inventario = new Inventario();
-        $this-> inventario -> setCapacidadeMaxima(20 + ($nivel * 3));  
-        $this-> nick  ($nick);
-        $this-> nivel ($nivel);
+    public function __construct(string $nickname, int $nivel){
+        $this->setNickname($nickname);
+        $this->setNivel($nivel);
+        $this->inventario = new Inventario(20);
     }
 
-    public function getNick(): string {
-        return $this->nome;
+    public function getNickname(): string {
+        return $this->nickname;
     }
 
-    public function setNick(string $nick): void {
-        if (empty($nick)) {
-            $this->nick = "Invalido"; 
+    public function setNickname(string $nickname): void {
+        if ($nickname != '') {
+            $this->nickname = $nickname;
         } else {
-            $this->nick = $nick;
+            $this->nickname = 'Sem Nome';
         }
     }
 
-    public function getNivel() {
+    public function getNivel(): int {
         return $this->nivel;
     }
 
     public function setNivel(int $nivel): void {
-        if ($nivel <= 0) {
-            $this->nivel = 1; 
-        } else {
+        if ($nivel >= 1) {
             $this->nivel = $nivel;
+        } else {
+            $this->nivel = 1;
         }
     }
 
-    public function elevarNivel(): void {
-        $this->nivel = $this->nivel + 1;
-        $elevar = $this->nivel * 3;
-        $CapacidadeAumentada = $this->inventario->getCapacidadeMaxima() + $elevar;
-        $this->inventario->setCapacidadeMaxima($CapacidadeAumentada);  
+    public function coletarItem(Item $item): void {
+        echo "Item coletado </br>";
+        $this->inventario->adicionar($item);
     }
 
-
-    public function coletarItem(Item $item): bool {
-        foreach ($this->inventario->getItens() as $itemInventario) {
-        if ($itemInventario->getNome() == $item->getNome()) {
-            return true;
-             } else {
-                return false;
-            }
-       } 
+    public function soltarItem(int $index): void {
+        $this->inventario->remover($index);
+        echo "Item soltado </br>";
     }
 
-
-    public function soltarItem(Item $item): bool {
-        foreach ($this->itens as $index => $objeto) {
-            if ($objeto->getNome() == $item->getNome()) { 
-                unset($this->itens [$index]);
-                return true; 
-            }
-        }
-        return false; 
+    public function listarItens(): void {
+        $this->inventario->listar();
     }
 
-    public function esvaziarInventario(): string{
-        $this->inventario->esvaziar();
-       return "Inventario vazio";
-    }
+    public function subirNivel(): void {
+        $this->nivel += 1;
+        $this->inventario->setCapacidadeMaxima($this->inventario->getCapacidadeMaxima() + ($this->nivel * 3));
 
+        echo "Parabéns você subiu para o nível {$this->nivel} </br>";
+        echo "Sua capacidade máxima agora é {$this->inventario->getCapacidadeMaxima()} </br>";
+    }
 }
 ?>
